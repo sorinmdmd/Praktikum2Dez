@@ -1,0 +1,13 @@
+package fabrik;
+
+import java.io.FileNotFoundException;
+
+public class ConcreteCreator extends Creator{
+
+	@Override
+	Product factoryMethod() throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		return new ConcreteProduct();
+	}
+
+}

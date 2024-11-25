@@ -1,0 +1,19 @@
+package fabrik;
+
+import java.io.IOException;
+
+public class ConcreteProductB extends Product {
+	private BufferedReader;
+	@Override
+	public String[] leseausDatei() throws IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void schliesseDatei() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,11 @@
+package fabrik;
+
+public class ConcreteCreator extends Creator{
+
+	@Override
+	Product factoryMethod() {
+		// TODO Auto-generated method stub
+		return new ConcreteProduct();
+	}
+
+}

@@ -1,0 +1,5 @@
+package fabrik;
+
+public class ConcreteProduct extends Product {
+
+}

@@ -1,0 +1,8 @@
+package fabrik;
+
+import java.io.IOException;
+
+public abstract class Product {
+	abstract String[] leseausDatei() throws IOException;
+	abstract void schliesseDatei() throws IOException;
+}

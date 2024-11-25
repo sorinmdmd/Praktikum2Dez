@@ -1,0 +1,38 @@
+package fabrik;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import business.Teppich;
+
+public class ConcreteProduct extends Product {
+	private BufferedReader reader;
+	
+	
+	public ConcreteProduct() throws FileNotFoundException {
+		super();
+		reader = new BufferedReader(new FileReader("TeppichenAusgabe.csv"));
+	}
+
+	@Override
+	String[] leseausDatei() throws IOException {
+		// TODO Auto-generated method stub
+		String line;
+		String[] ausgabe = new String[5];
+		while ((line = reader.readLine()) != null) {
+			String[] zeile = line.split(";");
+			
+			
+		return ;
+	}
+
+	@Override
+	void schliesseDatei() throws IOException {
+		// TODO Auto-generated method stub
+		reader.close();
+		
+	}
+
+}

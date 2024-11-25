@@ -1,0 +1,7 @@
+package fabrik;
+
+import java.io.IOException;
+
+public abstract class Creator {
+	abstract Product factoryMethod() throws IOException;
+}
