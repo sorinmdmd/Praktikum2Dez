@@ -10,7 +10,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import ownUtil.*;
 
-public class BodenbelaegeView {
+public class BodenbelaegeView implements Observer {
 
 	private BodenbelaegeControl bodenbelaegeControl;
 	private TeppichenModel teppicheModel;
@@ -24,12 +24,13 @@ public class BodenbelaegeView {
 	public BodenbelaegeView(BodenbelaegeControl bodenbelaegeControl, Stage primaryStage, TeppichenModel teppicheModel) {
 		Scene scene = new Scene(this.pane, 560, 340);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Anzeige von Bodenbelägen");
+		primaryStage.setTitle("Anzeige von Bodenbelï¿½gen");
 		primaryStage.show();
 		this.bodenbelaegeControl = bodenbelaegeControl;
 		this.teppicheModel = teppicheModel;
 		this.initKomponenten();
 		this.initListener();
+		this.teppicheModel.addObserver(this);
 	}
 
 	private void initKomponenten() {
@@ -64,7 +65,10 @@ public class BodenbelaegeView {
 
 	public void zeigeTeppichAn() {
 		if (teppicheModel.getTeppichen() != "") {
+
 			txtAnzeigeTeppiche.setText(teppicheModel.getTeppichen());
+		} else if (teppicheModel.getTeppich() != null) {
+			txtAnzeigeTeppiche.setText(teppicheModel.getTeppich().gibTeppichZurueck(' '));
 		} else {
 			zeigeInformationsfensterAn("Bisher wurde kein Teppich aufgenommen!");
 		}
@@ -72,6 +76,16 @@ public class BodenbelaegeView {
 
 	private void zeigeInformationsfensterAn(String meldung) {
 		new MeldungsfensterAnzeiger(AlertType.INFORMATION, "Information", meldung).zeigeMeldungsfensterAn();
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		if (teppicheModel.getTeppich() != null) {
+			txtAnzeigeTeppiche.setText(teppicheModel.getTeppich().gibTeppichZurueck(' '));
+		} else {
+			zeigeInformationsfensterAn("Bisher wurde kein Teppich aufgenommen!");
+		}
 	}
 
 }

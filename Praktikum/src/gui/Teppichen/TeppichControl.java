@@ -5,7 +5,7 @@ import business.TeppichenModel;
 import javafx.stage.Stage;
 import ownUtil.Observer;
 
-public class TeppichControl implements Observer{
+public class TeppichControl{
 	
 	private TeppichenModel model;
 	private TeppichenView view;
@@ -15,7 +15,6 @@ public class TeppichControl implements Observer{
 		
 		this.model = model.getInstance();
 		this.view = new TeppichenView(stage, model, this);
-		model.addObserver(this);
 	}
 
 	public void schreibeTeppichenInCsvDatei() {
@@ -45,7 +44,4 @@ public class TeppichControl implements Observer{
 		}
 	}
 	
-	public void update() {
-		view.zeigeTeppichAn();
-	}
 }

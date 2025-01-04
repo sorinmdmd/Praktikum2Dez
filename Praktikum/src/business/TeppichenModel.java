@@ -76,11 +76,12 @@ public class TeppichenModel implements Observable {
 	}
 
 	public Teppich getTeppich() {
-		return teppich;
+		return this.teppich;
 	}
 
 	public void setTeppich(Teppich teppich) {
 		this.teppich = teppich;
+		System.out.println(this.teppich);
 	}
 
 	@Override
@@ -99,10 +100,8 @@ public class TeppichenModel implements Observable {
 
 	@Override
 	public void notifyObserver() {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < oblist.size(); i++) {
-			oblist.get(i).update();
+		for(Observer o : oblist) {
+			o.update();
 		}
-
 	}
 }

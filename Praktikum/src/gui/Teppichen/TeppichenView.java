@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import ownUtil.*;
 
-public class TeppichenView {
+public class TeppichenView implements Observer {
 
 	private TeppichenModel model;
 	private TeppichControl control;
@@ -52,6 +52,7 @@ public class TeppichenView {
 		primaryStage.show();
 		this.initKomponenten();
 		this.initListener();
+		this.model.addObserver(this);
 	}
 
 	private void initKomponenten() {
@@ -131,7 +132,6 @@ public class TeppichenView {
 		btnAnzeige.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				control.leseAusDatei("csv");
 				zeigeTeppichAn();
 			}
 		});
@@ -158,6 +158,8 @@ public class TeppichenView {
 	public void zeigeTeppichAn() {
 		if (model.getTeppichen() != "") {
 			txtAnzeige.setText(model.getTeppichen());
+		} else if (model.getTeppich() != null) {
+			txtAnzeige.setText(model.getTeppich().gibTeppichZurueck(' '));
 		} else {
 			zeigeInformationsfensterAn("Bisher wurde kein Teppich aufgenommen!");
 		}
@@ -204,6 +206,18 @@ public class TeppichenView {
 			zeigeInformationsfensterAn("Das Teppich wurde aufgenommen!");
 		} catch (Exception exc) {
 			zeigeFehlermeldungsfensterAn(exc.getMessage());
+		}
+
+		model.notifyObserver();
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		if (model.getTeppichen() != null) {
+			txtAnzeige.setText(model.getTeppich().gibTeppichZurueck(' '));
+		} else {
+			zeigeInformationsfensterAn("Bisher wurde kein Teppich aufgenommen!");
 		}
 	}
 
