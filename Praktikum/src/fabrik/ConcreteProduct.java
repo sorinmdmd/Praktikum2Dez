@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import business.Teppich;
 
@@ -30,6 +32,18 @@ public class ConcreteProduct extends Product {
 		}
 		return ausgabe;
 	}
+	
+//	@Override
+//	public String[] leseausDatei() throws IOException {
+//	    List<String> lines = new ArrayList<>();
+//
+//	    String line;
+//	    while ((line = reader.readLine()) != null) {
+//	        lines.add(line); 
+//	    }
+//
+//	    return lines.toArray(new String[0]);
+//	}
 
 	@Override
 	public void schliesseDatei() throws IOException {

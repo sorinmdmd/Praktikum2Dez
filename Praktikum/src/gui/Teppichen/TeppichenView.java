@@ -214,7 +214,9 @@ public class TeppichenView implements Observer {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		if (model.getTeppichen() != null) {
+		if (model.getTeppichen() != "") {
+			txtAnzeige.setText(model.getTeppichen());
+		} else if (model.getTeppich() != null) {
 			txtAnzeige.setText(model.getTeppich().gibTeppichZurueck(' '));
 		} else {
 			zeigeInformationsfensterAn("Bisher wurde kein Teppich aufgenommen!");

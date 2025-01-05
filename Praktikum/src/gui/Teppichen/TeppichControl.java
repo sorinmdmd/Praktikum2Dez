@@ -5,14 +5,14 @@ import business.TeppichenModel;
 import javafx.stage.Stage;
 import ownUtil.Observer;
 
-public class TeppichControl{
-	
+public class TeppichControl {
+
 	private TeppichenModel model;
 	private TeppichenView view;
 
 	public TeppichControl(Stage stage) {
 		super();
-		
+
 		this.model = model.getInstance();
 		this.view = new TeppichenView(stage, model, this);
 	}
@@ -27,7 +27,7 @@ public class TeppichControl{
 			view.zeigeFehlermeldungsfensterAn("Unbekannter Fehler beim Speichern!");
 		}
 	}
-	
+
 	public void leseAusDatei(String typ) {
 		try {
 			if ("csv".equals(typ)) {
@@ -43,5 +43,5 @@ public class TeppichControl{
 			view.zeigeFehlermeldungsfensterAn("Unbekannter Fehler beim Lesen!");
 		}
 	}
-	
+
 }

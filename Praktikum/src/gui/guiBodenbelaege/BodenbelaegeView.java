@@ -81,7 +81,9 @@ public class BodenbelaegeView implements Observer {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		if (teppicheModel.getTeppich() != null) {
+		if (teppicheModel.getTeppichen() != "") {
+			txtAnzeigeTeppiche.setText(teppicheModel.getTeppichen());
+		} else if (teppicheModel.getTeppich() != null) {
 			txtAnzeigeTeppiche.setText(teppicheModel.getTeppich().gibTeppichZurueck(' '));
 		} else {
 			zeigeInformationsfensterAn("Bisher wurde kein Teppich aufgenommen!");
